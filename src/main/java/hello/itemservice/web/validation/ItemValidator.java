@@ -22,7 +22,6 @@ public class ItemValidator implements Validator {
 
         //검증 로직
 
-        // 단순한 기능 제공시 아래와 같이 if문이 아닌 한줄로 사용 가능하다.
         if (!StringUtils.hasText(item.getItemName())) {
             errors.rejectValue("itemName", "required");
         }

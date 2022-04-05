@@ -300,6 +300,7 @@ public class ValidationItemControllerV2 {
 
         //검증에 실패하면 다시 입력 폼으로
         if (bindingResult.hasErrors()) {//bindingResult.에러가 있으면
+            log.info("errors = {}", bindingResult);//model에 자동으로 담긴다.
             return "validation/v2/addForm";//파라미터에서 받은 item 객체가 model에 담기기 때문에 작성한 데이터 유지
         }
 
