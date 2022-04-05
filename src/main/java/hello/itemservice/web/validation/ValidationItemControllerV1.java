@@ -25,7 +25,7 @@ public class ValidationItemControllerV1 {
     }
 
     @GetMapping("/{itemId}")
-    public String item(@PathVariable long itemId, Model model) {
+    public String item(@PathVariable long itemId, Model model) { //@PathVariable(경로 변수) 사용 (@GetMapping("/{itemId}")에서 {itemId} 이거
         Item item = itemRepository.findById(itemId);
         model.addAttribute("item", item);
         return "validation/v1/item";
@@ -37,11 +37,17 @@ public class ValidationItemControllerV1 {
         return "validation/v1/addForm";
     }
 
+
+    /**
+     * 한번 더 복습 겸!!
+     * String , int , Integer 같은 단순 타입 = @RequestParam
+     * 나머지 = @ModelAttribute (argument resolver 로 지정해둔 타입 외)
+     */
     @PostMapping("/add")
-    public String addItem(@ModelAttribute Item item, RedirectAttributes redirectAttributes) {
+    public String addItem(@ModelAttribute Item item, RedirectAttributes redirectAttributes) { //@ModelAttribute: 생략가능
         Item savedItem = itemRepository.save(item);
         redirectAttributes.addAttribute("itemId", savedItem.getId());
-        redirectAttributes.addAttribute("status", true);
+        redirectAttributes.addAttribute("status", true); //쿼리스트링으로 넘어감
         return "redirect:/validation/v1/items/{itemId}";
     }
 
