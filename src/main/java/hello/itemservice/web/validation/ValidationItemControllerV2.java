@@ -67,7 +67,11 @@ public class ValidationItemControllerV2 {
      * new ObjectError(String objectName, String defaultMessage)
      * objectName: @ModelAttribute 이름
      * defaultMessage: 오류 기본 메시지
-     */
+     *
+     *
+     * 문제점: 에러가 난 필드의 입력한 값이 사라짐짐
+     * 예: 가격을 1000원 미만으로 입력을 해도 입력한 값이 남아있어야하는데 유지되지 않음
+    */
     @PostMapping("/add")
     public String addItemV1(@ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes) { //@ModelAttribute: 생략가능
 
